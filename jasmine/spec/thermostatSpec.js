@@ -61,6 +61,7 @@ describe('thermostat' , function () {
       thermostat.switchPowerSavingOff()
       expect(thermostat.isPowerSavingModeOn()).toEqual(false)
     });
+
   });
 
   describe('.switchPowerSavingOn', function() {
@@ -68,6 +69,15 @@ describe('thermostat' , function () {
       thermostat.switchPowerSavingOff()
       thermostat.switchPowerSavingOn()
       expect(thermostat.isPowerSavingModeOn()).toEqual(true)
+    });
+    it('switched the power saving mode on, when temperature above max temp for psm on', function() {
+      thermostat.switchPowerSavingOff()
+      for(var i = 0; i < 8; i++) {
+        thermostat.up()
+      }
+      expect(thermostat.current()).toEqual(28)
+      thermostat.switchPowerSavingOn()
+      expect(thermostat.current()).toEqual(25)
     });
   });
 
