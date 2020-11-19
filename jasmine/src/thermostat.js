@@ -38,10 +38,17 @@ class Thermostat {
   switchPowerSavingOn() {
     this._powerSavingMode = true
     this._max = 25
+    this.current() > this._max ? this.resetTemperature(this._max) : this.current()
+    // this.current() > this._max ? this.resetTemperature(this._max) : this.current()
+    // if (this.current() > this._max) {
+    //   this._max = this.resetTemperature(this._max)
+    // } else {
+    //   this._max = this.current()
+    // }
   }
 
-  resetTemperature() {
-    this._temp = 20
+  resetTemperature(temp = 20) {
+    this._temp = temp
   }
 
   currentEnergyUsage() {
