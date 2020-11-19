@@ -5,24 +5,26 @@
     <title>Thermostat</title>
   </head>
   <body>
-    <h2 id="temperature" class="medium-usage"></h2>
-    <p>
-      <button id="temp-up"> + </button>
-      <button id="temp-down"> - </button>
-      <button id="reset-temp"> Reset</button>
-      <br><br>
-      Power saving mode: <span id="psm">ON</span>
-      <br><br>
-      <button id="psm-on"> - </button>
-      <button id="psm-off"> o </button>
-      <br><br>
-      <form id='citySelect'>
-        <input id='cityText' type='text'></input>
-        <input type='submit' value='SEARCH YOUR CITY'></input>
-      </form>
-      Current outside temperature: <span id='weather'></span>
-
-    </p>
+    <center>
+      <h2 id="temperature" class="medium-usage"></h2>
+      <p>
+        <button id="temp-up" class='myButton'> + </button>
+        <button id="temp-down" class='myButton'> - </button>
+        <button id="reset-temp" class='myButton'> Reset</button>
+        <br><br>
+        Power saving mode: <span id="psm">ON</span>
+        <br><br>
+        <button id="psm-on" class='myButton'> - </button>
+        <button id="psm-off" class='myButton'> o </button>
+        <br><br>
+        <form id='citySelect'>
+          <input id='cityText' type='text'></input>
+          <input type='submit' value='SEARCH YOUR CITY' class='myButton'></input>
+        </form>
+        <br><br>
+        Current temperature in <span id="cityName"></span>: <span id='weather'></span>
+      </p>
+    </center>
     <script src="src/thermostat.js"></script>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="interface.js"></script>

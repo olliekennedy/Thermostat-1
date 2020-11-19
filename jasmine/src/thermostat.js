@@ -5,7 +5,6 @@ class Thermostat {
     this._powerSavingMode = true
     this._MIN = 10
     this._max = 25
-    // this._API_KEY = process.env.WEATHER
   }
 
   current() {
@@ -39,12 +38,6 @@ class Thermostat {
     this._powerSavingMode = true
     this._max = 25
     this.current() > this._max ? this.resetTemperature(this._max) : this.current()
-    // this.current() > this._max ? this.resetTemperature(this._max) : this.current()
-    // if (this.current() > this._max) {
-    //   this._max = this.resetTemperature(this._max)
-    // } else {
-    //   this._max = this.current()
-    // }
   }
 
   resetTemperature(temp = 20) {
@@ -62,10 +55,4 @@ class Thermostat {
       return 'medium-usage'
     }
   }
-
-  // weather() {
-  //   var localTemp = $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ffdee33ee43b3154807ccd18142ac90c', function(data) {
-  //   console.log(data.main.temp);
-  //   });
-  // }
 }
