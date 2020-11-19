@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  let endpoint = 'http://api.openweathermap.org/data/2.5/weather'
-  let apiKey = 'ffdee33ee43b3154807ccd18142ac90c'
+  let endpoint = 'http://api.openweathermap.org/data/2.5/weather?q='
+  let apiKey = '&appid=ffdee33ee43b3154807ccd18142ac90c'
   var thermostat = new Thermostat();
   updateTemperature();
 
@@ -30,33 +30,24 @@ $(document).ready(function() {
     $('#psm').text('OFF');
   });
 
-  // $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ffdee33ee43b3154807ccd18142ac90c', function(data) {
-  //   $('#weather').text((data.main.temp - 273.15).toFixed(2))
-  //   console.log(data.main.temp);
-  // });
+  displayWeather('london');
 
   $("#citySelect").submit(function(){
     event.preventDefault();
       var city = $("#cityText").val();
-      $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=ffdee33ee43b3154807ccd18142ac90c', function(data) {
-        $('#weather').text((data.main.temp - 273.15).toFixed(2))
-        console.log(data.main.temp);
-      });
+      displayWeather(city);
   });
 
-  // $.ajax({
-  //   url: endpoint + " ?q=" + 'London,uk' + "&appid=" + apiKey,
-  //   contentType: "application/json",
-  //   dataType: 'json',
-  //   success: function(result){
-  //     console.log(result);
-  //   }
-  // });
+  function displayWeather(city) {
+    $.get(endpoint + city + apiKey, function(data) {
+      $('#weather').text((data.main.temp - 273.15).toFixed(2))
+    });
+    $('#cityName').text(city);
+  };
 
   function updateTemperature() {
     $('#temperature').text(thermostat.current());
     $('#temperature').attr('class', thermostat.currentEnergyUsage());
-    // $('#weather').text(thermostat.weather());
   };
 
 });
